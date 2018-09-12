@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.pkhh.projectcndd"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // androidx
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-rc01'
+    implementation 'androidx.cardview:cardview:1.0.0-rc01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.paging:paging-runtime:2.0.0-beta01'
+
+    // material
+    implementation 'com.google.android.material:material:1.0.0-rc01'
+
+    // play-services
+    def playServicesVersion = '15.0.1'
+    implementation "com.google.android.gms:play-services-location:$playServicesVersion"
+    implementation "com.google.android.gms:play-services-places:$playServicesVersion"
+    implementation "com.google.android.gms:play-services-maps:$playServicesVersion"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+
+    // view pager indicator
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.moshi:moshi-adapters:1.6.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // search view
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    // circle imageview
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    // firebase
+    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation 'com.google.firebase:firebase-firestore:17.1.0'
+    implementation 'com.google.firebase:firebase-storage:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.3'
+
+    // FirebaseUI
+    def firebaseUiVersion = '4.1.0'
+    implementation "com.firebaseui:firebase-ui-firestore:$firebaseUiVersion"
+    implementation "com.firebaseui:firebase-ui-auth:$firebaseUiVersion"
+
+    // image slider
+    implementation project(':image-slider')
+}
+
+
+apply plugin: 'com.google.gms.google-services'
