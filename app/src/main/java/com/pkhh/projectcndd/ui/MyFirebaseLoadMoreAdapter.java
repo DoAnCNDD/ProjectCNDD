@@ -50,13 +50,15 @@ public abstract class MyFirebaseLoadMoreAdapter<T extends FirebaseModel> extends
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
                 int itemCount = linearLayoutManager.getItemCount();
-                if (lastVisible != null && !isLoading && lastVisibleItemPosition + visibleThreshold >= itemCount && !hasError) {
-                    if (!isLastItemReached) {
-                        loadMore();
-                        isLoading = true;
-                    } else {
-                        onLastItemReached();
-                    }
+                if (lastVisible != null && !isLoading
+                        && lastVisibleItemPosition + visibleThreshold >= itemCount
+                        && !hasError && !isLastItemReached) {
+                    loadMore();
+                    isLoading = true;
+                }
+
+                if (lastVisibleItemPosition == itemCount && isLastItemReached) {
+                    onLastItemReached();
                 }
             }
         });
